@@ -14,6 +14,16 @@ Esquematização MER - Projeto Final de Banco de Dados
     Atributos:
 
         *RAPHAELLE*
+        Cargos Scrum
+            - id; 
+            - nome;
+            - função;
+        Membros
+            - id;
+            - nome;
+            - cargo;
+            - email;
+            - github;
         Entrevistas
             - id;
             - entrevistado;
@@ -22,10 +32,6 @@ Esquematização MER - Projeto Final de Banco de Dados
             - id;
             - nome;
             - cargo na rede sesi;
-        Cargos Scrum
-            - id; 
-            - nome;
-            - função;
 
         *Pedro*
         Autores
@@ -39,20 +45,13 @@ Esquematização MER - Projeto Final de Banco de Dados
             - id;
             - título;
             - descrição;
-        Membros
-            - id;
-            - nome;
-            - cargo;
-            - email;
-            - github;
-        
+   
         *Miguel Sarti*
         Carreiras
             - id;
             - cargo;
-            - salário médio;
+            - estágio;
             - requisitos;
-            - carga horária;
         Estágios
             - id;
             - cargo;
