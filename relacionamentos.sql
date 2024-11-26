@@ -4,55 +4,6 @@ CREATE DATABASE portal_de_materias;
 
 ---------------------------------Criação das Tabelas---------------------------------
 
--- Criação da Tabela "Cargos Scrum"
-CREATE TABLE cargos_scrum (
-    id SERIAL PRIMARY KEY,
-    cargo VARCHAR(50),
-    funcao TEXT
-);
-
--- Criação da Tabela "Entrevistas"
-CREATE TABLE entrevistas (
-    id SERIAL PRIMARY KEY,
-    entrevistado VARCHAR(150) NOT NULL,
-    tempo_de_duracao DECIMAL(4, 2)
-);
-
--- Criação da Tabela "Membros"
-CREATE TABLE membros (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    cargo INT,
-    email VARCHAR(150) UNIQUE NOT NULL,
-    github VARCHAR(100)
-    CONSTRAINT fk_cargo FOREIGN KEY (cargo) REFERENCES cargos_scrum(cargo)
-);
-
--- Criação da Tabela "Entrevistados"
-CREATE TABLE entrevistados (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(150) NOT NULL,
-    cargo_rede_sesi VARCHAR(50),
-);
-
--- Criação da Tabela "Estágios"
-CREATE TABLE estagios (
-    id_estagio SERIAL PRIMARY KEY,
-    cargo_estagio VARCHAR(100),
-    empresa VARCHAR(100),
-    salario_medio DECIMAL(4,2),
-    requisitos_estagio VARCHAR(100),
-    carga_horaria INTEGER(2,3)
-);
-
--- Criação da Tabela "Carreiras"
-CREATE TABLE carreiras (
-    id_carreira SERIAL PRIMARY KEY,
-    cargo_carreira VARCHAR(100),
-    estagio VARCHAR(100),
-    requisitos_cargo VARCHAR(100)
-)
-
 -- Criação da Tabela "Autores"
 CREATE TABLE autores (
     ID_autor SERIAL PRIMARY KEY,
@@ -63,12 +14,62 @@ CREATE TABLE autores (
 -- Criação da Tabela "Notícias"
 CREATE TABLE noticias (
     id SERIAL PRIMARY KEY,
-    autor VARCHAR(100),,
     titulo VARCHAR(100) NOT NULL,
     fonte TEXT UNIQUE NOT NULL,
     lead TEXT NOT NULL,
     data_publicacao DATE,
-    imagem LONGBLOB
+    imagem LONGBLOB,
+    CONSTRAINT fk_autor FOREIGN KEY (autor) REFERENCES autores(nome)
+);
+
+-- Criação da Tabela "Cargos Scrum"
+CREATE TABLE cargos_scrum (
+    id SERIAL PRIMARY KEY,
+    cargo VARCHAR(50),
+    funcao TEXT
+);
+
+-- Criação da Tabela "Membros"
+CREATE TABLE membros (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cargo INT,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    github VARCHAR(100),
+    CONSTRAINT fk_cargo FOREIGN KEY (cargo) REFERENCES cargos_scrum(cargo)
+);
+
+-- Criação da Tabela "Entrevistados"
+CREATE TABLE entrevistados (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    cargo_rede_sesi VARCHAR(50),
+);
+
+-- Criação da Tabela "Entrevistas"
+CREATE TABLE entrevistas (
+    id SERIAL PRIMARY KEY,
+    CONSTRAINT fk_entrevistado FOREIGN KEY (entrevistado) REFERENCES entrevistados(nome),
+    CONSTRAINT fk_entrevistador FOREIGN KEY (entrevistador) REFERENCES membros(nome),
+    tempo_de_duracao DECIMAL(4, 2)
+);
+
+-- Criação da Tabela "Carreiras"
+CREATE TABLE carreiras (
+    id_carreira SERIAL PRIMARY KEY,
+    cargo_carreira VARCHAR(100),
+    estagio VARCHAR(100),
+    requisitos_cargo VARCHAR(100)
+)
+
+-- Criação da Tabela "Estágios"
+CREATE TABLE estagios (
+    id_estagio SERIAL PRIMARY KEY,
+    cargo_estagio VARCHAR(100),
+    empresa VARCHAR(100),
+    salario_medio DECIMAL(4,2),
+    requisitos_estagio VARCHAR(100),
+    carga_horaria INTEGER(2,3)
 );
 
 -- Criação da Tabela "Simulados"
