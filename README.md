@@ -67,7 +67,8 @@ Esquematização MER - Projeto Final de Banco de Dados
             - título;
             - fonte;
             - lead;
-            - data de publicação;  
+            - data de publicação;
+            - imagem;  
 
     Relacionamentos:
         - Cada autor possui no mínimo nenhuma e no máximo várias notícias, enquanto cada notícia é possuída por pelo menos um autor, e no máximo vários;
