@@ -30,4 +30,3 @@ INSERT INTO estagios (cargo_estagio, empresa, salario_medio, requisitos_estagio,
 ('Letras', 'Academia Brasileira de Letras', '1739,51', 'Comunicação, Análise Textual e Escrita', '3.320'),
 ('Pedagogia', 'Pedagogia para Liberdade', '1706,71', 'Inglês Fluente, Educação, Conhecimento para Ensinar', '3.200'),
 ('Redação', 'Estagiário de Redação de Conteúdo', '1033,00', 'Graduação, Inglês fluente, Interpretação', '3.700'),
-    
