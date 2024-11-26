@@ -50,9 +50,8 @@ Esquematização MER - Projeto Final de Banco de Dados
         Carreiras
             - id;
             - cargo;
-            - salário médio;
+            - estágio;
             - requisitos;
-            - carga horária;
         Estágios
             - id;
             - cargo;
