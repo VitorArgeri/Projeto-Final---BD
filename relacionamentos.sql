@@ -108,17 +108,17 @@ INSERT INTO membros (nome, cargo, email, github)
 ('Raphaelle Lacerda', 3, 'raphaelle.lacerda@aluno.senai.br', 'R4phaLacerda'),
 ('Sara Souza', 3, 'sara.e.souza9@aluno.senai.br', 's0uzx');
 
--- Inserções na Tabela de "Entrevistas"
-INSERT INTO entrevistas (entrevistado, tempo_de_duracao) VALUES
-('Daniela Real', 09.35),
-('Ivonete Pereira', 10.13),
-('Ana Freire', 07.54);
-
 -- Inserções na Tabela de "Entrevistados"
 INSERT INTO entrevistados (nome, cargo) VALUES
 ('Daniela Real','Professor de Português'),
 ('Ivonete Pereira', 'Professor de Português'),
 ('Ana Freire', 'Professor de Português');
+
+-- Inserções na Tabela de "Entrevistas"
+INSERT INTO entrevistas (entrevistado, tempo_de_duracao) VALUES
+('Daniela Real', 09.35),
+('Ivonete Pereira', 10.13),
+('Ana Freire', 07.54);
 
 -- Inserções na Tabela de "Notícias"
 INSERT INTO noticias (autor, titulo, fonte, lead, data_publicacao, imagem) VALUES 
@@ -171,3 +171,17 @@ INSERT INTO simulados (fase_ensino, numero_questoes) VALUES
 ("Ensino Médio", "15");
 
 --------------------------------Consultas nas Tabelas--------------------------------
+
+--Consultas com SELECT 
+SELECT * FROM autores;
+SELECT * FROM noticias;
+SELECT * FROM cargos_scrum;
+SELECT * FROM membros;
+SELECT * FROM entrevistados;
+SELECT * FROM entrevistas;
+SELECT * FROM carreiras;
+SELECT * FROM estagios;
+SELECT * FROM simulados;
+SELECT * FROM dicas;
+
+--Consultas nas tabelas relacionadas com JOIN
