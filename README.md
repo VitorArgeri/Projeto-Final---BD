@@ -10,6 +10,7 @@ Esquematização MER - Projeto Final de Banco de Dados
         Cargos Scrum;
 
     Atributos:
+
         Autores
             - id;
             - nome;
