@@ -63,12 +63,12 @@ CREATE TABLE autores (
 -- Criação da Tabela "Notícias"
 CREATE TABLE noticias (
     id SERIAL PRIMARY KEY,
-    autor VARCHAR(100),,
-    titulo VARCHAR(100) NOT NULL,
-    fonte TEXT UNIQUE NOT NULL,
-    lead TEXT NOT NULL,
+    autor VARCHAR(200),
+    titulo VARCHAR(500) NOT NULL,
+    fonte VARCHAR(500) UNIQUE NOT NULL,
+    lead VARCHAR(500) NOT NULL,
     data_publicacao DATE,
-    imagem LONGBLOB
+    imagem BYTEA
 );
 
 -- Criação da Tabela "Simulados"
