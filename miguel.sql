@@ -18,11 +18,11 @@ CREATE TABLE carreiras (
     requisitos_cargo VARCHAR(100)
 )
 
--- Inserir Carreiras e Estágios
+-- Inserções de conteúdo em Carreiras e Estágios
 
 INSERT INTO carreiras (cargo_carreira, estagio, requisitos_cargo) VALUES
 ('Professor', 'Pedagogia', 'Formação na área'),
-('Escritor', 'Letras', 'Escrever e criar texto corretamente e criativa.'),
+('Escritor', 'Letras', 'Escrever e criar texto de forma correta e criativa.'),
 ('Juiz', 'Direito', 'Formação na área');
 
 INSERT INTO estagios (cargo_estagio, empresa, salario_medio, requisitos_estagio, carga_horaria) VALUES
