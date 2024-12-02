@@ -4,6 +4,24 @@ CREATE DATABASE portal_de_materias;
 
 ---------------------------------Criação das Tabelas---------------------------------
 
+-- Criação da Tabela "Autores"
+CREATE TABLE autores (
+    ID_autor SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    contratante VARCHAR(50)
+);
+
+-- Criação da Tabela "Notícias"
+CREATE TABLE noticias (
+    id SERIAL PRIMARY KEY,
+    CONSTRAINT fk_autor FOREIGN KEY (ID_autor) REFERENCES autores(ID_autor),
+    titulo VARCHAR(500) NOT NULL,
+    fonte VARCHAR(500) UNIQUE NOT NULL,
+    lead VARCHAR(500) NOT NULL,
+    data_publicacao DATE,
+    imagem BYTEA
+);
+
 -- Criação da Tabela "Cargos Scrum"
 CREATE TABLE cargos_scrum (
     id SERIAL PRIMARY KEY,
@@ -11,28 +29,29 @@ CREATE TABLE cargos_scrum (
     funcao TEXT
 );
 
--- Criação da Tabela "Entrevistas"
-CREATE TABLE entrevistas (
-    id SERIAL PRIMARY KEY,
-    entrevistado VARCHAR(150) NOT NULL,
-    tempo_de_duracao DECIMAL(4, 2)
-);
-
 -- Criação da Tabela "Membros"
 CREATE TABLE membros (
-    id SERIAL PRIMARY KEY,
+    membro_id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     cargo INT,
     email VARCHAR(150) UNIQUE NOT NULL,
-    github VARCHAR(100)
+    github VARCHAR(100),
     CONSTRAINT fk_cargo FOREIGN KEY (cargo) REFERENCES cargos_scrum(cargo)
 );
 
 -- Criação da Tabela "Entrevistados"
 CREATE TABLE entrevistados (
-    id SERIAL PRIMARY KEY,
+    entrevistado_id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
-    cargo_rede_sesi VARCHAR(50),
+    cargo_rede_sesi VARCHAR(50)
+);
+
+-- Criação da Tabela "Entrevistas"
+CREATE TABLE entrevistas (
+    id SERIAL PRIMARY KEY,
+    CONSTRAINT fk_entrevistado FOREIGN KEY (entrevistado_id) REFERENCES entrevistados(entrevistado_id),
+    CONSTRAINT fk_cargo FOREIGN KEY (membro_id) REFERENCES membros(membro_id),
+    tempo_de_duracao DECIMAL(4, 2)
 );
 
 -- Criação da Tabela "Estágios"
@@ -52,24 +71,6 @@ CREATE TABLE carreiras (
     estagio VARCHAR(100),
     requisitos_cargo VARCHAR(100)
 )
-
--- Criação da Tabela "Autores"
-CREATE TABLE autores (
-    ID_autor SERIAL PRIMARY KEY,
-    nome VARCHAR(100),
-    contratante VARCHAR(50)
-);
-
--- Criação da Tabela "Notícias"
-CREATE TABLE noticias (
-    id SERIAL PRIMARY KEY,
-    autor VARCHAR(200),
-    titulo VARCHAR(500) NOT NULL,
-    fonte VARCHAR(500) UNIQUE NOT NULL,
-    lead VARCHAR(500) NOT NULL,
-    data_publicacao DATE,
-    imagem BYTEA
-);
 
 -- Criação da Tabela "Simulados"
 CREATE TABLE simulados (
