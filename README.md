@@ -76,6 +76,3 @@ Esquematização MER - Projeto Final de Banco de Dados
         - Cada entrevista possui exatamente um entrevistado, enquanto um entrevistado é possuído por no mínimo nenhuma notícia, e no máximo várias;
 
 Responsabilidades 
-
-Vitor Argeri
-- 
