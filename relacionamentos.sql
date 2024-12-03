@@ -1,24 +1,19 @@
--- Criação do banco de dados
+
 CREATE DATABASE portal_de_materias;
 \c portal_de_materias;
 
----------------------------------Criação das Tabelas---------------------------------
-
--- Criação da Tabela: Dicas
 CREATE TABLE dicas (
     id_dicas SERIAL PRIMARY KEY,
     titulo_dicas VARCHAR(200),
-    descricao_dicas VARCHAR(1000),
+    descricao_dicas VARCHAR(1000)
 );
 
--- Criação da Tabela "Autores"
 CREATE TABLE autores (
     ID_autor SERIAL PRIMARY KEY,
     nome VARCHAR(100),
     contratante VARCHAR(50)
 );
 
--- Criação da Tabela "Notícias"
 CREATE TABLE noticias (
     id SERIAL PRIMARY KEY,
     autor INT,
@@ -30,14 +25,12 @@ CREATE TABLE noticias (
     CONSTRAINT fk_autor FOREIGN KEY (autor) REFERENCES autores(ID_autor)
 );
 
--- Criação da Tabela "Cargos Scrum"
 CREATE TABLE cargos_scrum (
     id SERIAL PRIMARY KEY,
     cargo VARCHAR(50),
     funcao TEXT
 );
 
--- Criação da Tabela "Membros"
 CREATE TABLE membros (
     membro_id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -47,14 +40,12 @@ CREATE TABLE membros (
     CONSTRAINT fk_cargo FOREIGN KEY (cargo) REFERENCES cargos_scrum(id)
 );
 
--- Criação da Tabela "Entrevistados"
 CREATE TABLE entrevistados (
     entrevistado_id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     cargo_rede_sesi VARCHAR(50)
 );
 
--- Criação da Tabela "Entrevistas"
 CREATE TABLE entrevistas (
     id SERIAL PRIMARY KEY,
     entrevistado INT,
@@ -64,17 +55,15 @@ CREATE TABLE entrevistas (
     CONSTRAINT fk_entrevistador FOREIGN KEY (entrevistador) REFERENCES membros(membro_id)
 );
 
--- Criação da Tabela "Estágios"
 CREATE TABLE estagios (
     id_estagio SERIAL PRIMARY KEY,
     cargo_estagio VARCHAR(100),
     empresa VARCHAR(100),
-    salario_medio DECIMAL(4,2),
+    salario_medio DECIMAL(6,2),
     requisitos_estagio VARCHAR(100),
-    carga_horaria DECIMAL(2,3)
+    carga_horaria DECIMAL(4,3)
 );
 
--- Criação da Tabela "Carreiras"
 CREATE TABLE carreiras (
     id_carreira SERIAL PRIMARY KEY,
     cargo_carreira VARCHAR(100),
@@ -83,16 +72,15 @@ CREATE TABLE carreiras (
     CONSTRAINT fk_estagio FOREIGN KEY (estagio) REFERENCES estagios(id_estagio)
 );
 
--- Criação da Tabela "Simulados"
 CREATE TABLE simulados (
     ID_simulado SERIAL PRIMARY KEY,
     fase_ensino VARCHAR(50),
     numero_questoes INT
 );
 
---------------------------------Inserções de conteúdo--------------------------------
 
--- Inserções das Dicas
+
+
 INSERT INTO dicas (titulo_dicas, descricao_dicas) VALUES
 ('Dica Número 01: Planeje sua Rotina', 'Ter um bom plano para o seu dia é essencial, seja para passar no vestibular ou melhorar suas habilidades profissionais. Organizar o tempo de forma que você consiga estudar sem abrir mão de outras tarefas é o primeiro passo. Divida seu tempo de maneira equilibrada, estabeleça metas realistas para o que você vai estudar e não esqueça de reservar um tempo para descanso e lazer. Assim, você garante produtividade sem estresse excessivo.'),
 ('Dica Número 02: Crie o Hábito de Estudar', 'Planejar é importante, mas o verdadeiro progresso vem com a prática diária. Criar o hábito de estudar regularmente, mesmo que por pouco tempo, ajuda a consolidar o que você aprende. Estabeleça um horário fixo, escolha um ambiente tranquilo e mantenha a consistência. No início, pode ser difícil, mas com o tempo, estudar vai se tornar parte natural da sua rotina. Só lembre-se de equilibrar os estudos com momentos de lazer para evitar o desgaste.'),
@@ -102,7 +90,7 @@ INSERT INTO dicas (titulo_dicas, descricao_dicas) VALUES
 ('Dica Número 06: Encontre uma Rede de Apoio', 'Estudar sozinho pode ser desafiador, e é aí que uma boa rede de apoio entra. Trocar ideias com amigos, colegas ou professores pode te ajudar a entender melhor os conteúdos e a manter a motivação. Participar de grupos de estudo, por exemplo, é uma ótima forma de aprender com os outros e ainda ajudar quem está com dificuldade. Além disso, um mentor ou alguém com mais experiência pode oferecer insights valiosos para o seu crescimento.'),
 ('Dica Número 07: Cuide da sua Saúde Mental e Física', 'Nenhum esforço vale a pena se a sua saúde estiver comprometida. Equilibrar os estudos com uma boa alimentação, exercício físico e momentos de lazer é essencial para manter o corpo e a mente funcionando bem. Se sentir exausto ou desmotivado é normal de vez em quando, mas é importante reconhecer quando parar e descansar. Tirar um tempo para si mesmo vai te ajudar a voltar aos estudos com mais foco e energia.');
 
--- Inserções na Tabela de "Autores"
+
 INSERT INTO autores (nome, contratante) VALUES
 ('Miguel Sarti', 'SESI-SENAI'),
 ('Marília Monitchele', 'Veja'),
@@ -110,9 +98,8 @@ INSERT INTO autores (nome, contratante) VALUES
 ('Wilson Ledo', 'CNN'),
 ('Lucas Pordeus León', 'CNN'),
 ('Mirella Cordeiro', 'CNN'),
-('Ana Zimmerman', 'G1'),
+('Ana Zimmerman', 'G1');
 
--- Inserções na Tabela de "Notícias"
 INSERT INTO noticias (autor, titulo, fonte, lead, data_publicacao, imagem) VALUES 
 (1, 'Premie de Portugal defende que portugues seja lingua oficial da ONU', 'https://veja.abril.com.br/mundo/premie-de-portugal-defende-que-portugues-seja-lingua-oficial-da-onu/', 'Luis Montenegro abordou Lula e disse que o petista tem carinho pela pauta; Ele tambem reforcou candidatura de seu pais ao Conselho de Seguranca.', '2024-09-26', 'https://lp-projeto.vercel.app/img/noticia-1.png'),
 (2, 'Fernando Venancio: A lingua portuguesa nao nasceu com os portugueses', 'https://veja.abril.com.br/educacao/fernando-venancio-a-lingua-portuguesa-nao-nasceu-com-os-portugues/', 'Linguista portugues desfaz preconceitos e parte da formacao das palavras para falar sobre a construcao do idioma', '2024-05-28', 'https://lp-projeto.vercel.app/img/noticia-2.png'),
@@ -127,17 +114,15 @@ INSERT INTO noticias (autor, titulo, fonte, lead, data_publicacao, imagem) VALUE
 (1, 'Professora da USP Ribeirao oferece curso gratuito de portugues para imigrantes', 'https://jornal.usp.br/campus-ribeirao-preto/professora-da-usp-ribeirao-oferece-curso-gratuito-de-portugues-para-imigrantes/', 'As inscricoes vao de 1 a 5 de agosto e o curso tera inicio dia 12 de agosto na Biblioteca Sinha Junqueira, no centro de Ribeirao Preto.', '2023-07-20', 'https://lp-projeto.vercel.app/img/noticia-11.png'),
 (1, 'Quantos paises falam portugues no mundo alem do Brasil?', 'https://exame.com/pop/quantos-paises-falam-portugues-no-mundo-alem-do-brasil-2/', 'Junho, dia 10, e o Dia da Lingua Portuguesa no Brasil, mas estamos longe de ser o unico pais a falar a lingua', '2023-07-20', 'https://lp-projeto.vercel.app/img/noticia-12.png'),
 (7, 'Serie do Jornal Hoje aborda a lingua portuguesa coloquial falada nas ruas', 'https://g1.globo.com/jornal-hoje/noticia/2015/03/serie-do-jornal-hoje-fala-sobre-lingua-coloquial-falada-nas-ruas.html', 'A lingua que a gente fala aborda a lingua falada em conversas espontaneas. Linguistas defendem que na comunicacao falada nao existe certo ou errado.', '2015-03-18', 'https://lp-projeto.vercel.app/img/noticia-13.png'),
-(8, 'Abismo entre o que falamos e escrevemos pode estar na raiz de muitos erros de portugues, diz linguista', 'https://www.bbc.com/portuguese/articles/crgg1kz9rn4o', 'A lingua que a gente fala aborda a lingua falada em conversas espontaneas. Linguistas defendem que na comunicacao falada nao existe certo ou errado.', '2024-06-13', 'https://lp-projeto.vercel.app/img/noticia-14.png'),
+(5, 'Abismo entre o que falamos e escrevemos pode estar na raiz de muitos erros de portugues, diz linguista', 'https://www.bbc.com/portuguese/articles/crgg1kz9rn4o', 'A lingua que a gente fala aborda a lingua falada em conversas espontaneas. Linguistas defendem que na comunicacao falada nao existe certo ou errado.', '2024-06-13', 'https://lp-projeto.vercel.app/img/noticia-14.png'),
 (1, 'Estudiosos discutem a lingua portuguesa na educacao, literatura e comunicacao', 'https://jornal.usp.br/universidade/eventos/estudiosos-discutem-a-lingua-portuguesa-na-educacao-literatura-e-comunicacao/', 'Evento de valorizacao da lingua esta recebendo trabalhos academicos ate 16 de agosto', '2019-07-30', 'https://lp-projeto.vercel.app/img/noticia-15.png');
 
 
--- Inserções na Tabela de "Cargos Scrum"
 INSERT INTO cargos_scrum (cargo, funcao) VALUES
 ('Product Owner', 'Responsável por maximizar o valor do produto, gerenciar o backlog do produto e definir prioridades garantindo que a equipe de desenvolvedores entenda claramente os itens do backlog.'),
 ('Scrum Master', 'Responsável por garantir que a equipe de desenvolvedores siga os princípios e práticas do Srum, removendo impedimentos, facilitando reuniões e promovendo melhorias.'),
 ('Developers', 'Responsáveis por criar e entregar incrementos de produto de alta qualidade, colaborando para planejar, desenvolver, testar e revisar o trabalho necessário para atingir objetivos do sprint.');
 
--- Inserções na Tabela de "Membros"
 INSERT INTO membros (nome, cargo, email, github) VALUES
 ('Pedro de Oliveira', 1, 'pedro.o.santos7@aluno.senai.br', 'pedro-ols'),
 ('Vitor Argeri', 2, 'vitor.argeri@aluno.senai.br', 'VitorArgeri'),
@@ -145,38 +130,35 @@ INSERT INTO membros (nome, cargo, email, github) VALUES
 ('Raphaelle Lacerda', 3, 'raphaelle.lacerda@aluno.senai.br', 'R4phaLacerda'),
 ('Sara Souza', 3, 'sara.e.souza9@aluno.senai.br', 's0uzx');
 
--- Inserções na Tabela de "Entrevistados"
+
 INSERT INTO entrevistados (nome, cargo_rede_sesi) VALUES
 ('Daniela Real','Professor de Português'),
 ('Ivonete Pereira', 'Professor de Português'),
 ('Ana Freire', 'Professor de Português');
 
--- Inserções na Tabela de "Entrevistas"
 INSERT INTO entrevistas (entrevistado, entrevistador, tempo_de_duracao) VALUES
 (1, 1, 09.35),
 (2, 1, 10.13),
 (3, 1, 07.54);
 
--- Inserções na Tabela de "Carreiras"
-INSERT INTO carreiras (cargo_carreira, estagio, requisitos_cargo) VALUES
-('Professor', 'Pedagogia', 'Formação na área'),
-('Escritor', 'Letras', 'Escrever e criar texto corretamente e criativa.'),
-('Juiz', 'Direito', 'Formação na área');
-
--- Inserções na Tabela de "Estágios"
 INSERT INTO estagios (cargo_estagio, empresa, salario_medio, requisitos_estagio, carga_horaria) VALUES
-('Direito', 'XRM Advocacia', '1838,00', 'Leitura, Boa Escrita e Inteligência Emocional', '3.700'),
-('Letras', 'Academia Brasileira de Letras', '1739,51', 'Comunicação, Análise Textual e Escrita', '3.320'),
-('Pedagogia', 'Pedagogia para Liberdade', '1706,71', 'Inglês Fluente, Educação, Conhecimento para Ensinar', '3.200'),
-('Redação', 'Estagiário de Redação de Conteúdo', '1033,00', 'Graduação, Inglês fluente, Interpretação', '3.700'),
+('Direito', 'XRM Advocacia', 1838.00, 'Leitura, Boa Escrita e Inteligência Emocional', 3.700),
+('Letras', 'Academia Brasileira de Letras', 1739.51, 'Comunicação, Análise Textual e Escrita', 3.320),
+('Pedagogia', 'Pedagogia para Liberdade', 1706.71, 'Inglês Fluente, Educação, Conhecimento para Ensinar', 3.200),
+('Redação', 'Estagiário de Redação de Conteúdo', 1033.00, 'Graduação, Inglês fluente, Interpretação', 3.700);
 
--- Inserções na Tabela de "Simulados"
+
+INSERT INTO carreiras (cargo_carreira, estagio, requisitos_cargo) VALUES
+('Professor', 3, 'Formação na área'),
+('Escritor', 2, 'Escrever e criar texto corretamente e criativa.'),
+('Juiz', 1, 'Formação na área');
+
+
 INSERT INTO simulados (fase_ensino, numero_questoes) VALUES
 ('Ensino Fundamental 1', 5),
 ('Ensino Fundamental 2', 5),
 ('Ensino Médio', 15);
 
---------------------------------Consultas nas Tabelas--------------------------------
 
 -- Consulta que o titulo de cada noticia e seu respectivo autor
 SELECT N.titulo AS Titulo, A.nome AS Autor
