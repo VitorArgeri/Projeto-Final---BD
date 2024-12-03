@@ -69,19 +69,14 @@ SELECT * FROM entrevistados;
 
 
 --------------------------------Consultas nas Tabelas--------------------------------
---Select's na tabela lalalala
+--Select na tabela Entrevista
+SELECT * FROM entrevistas WHERE tempo_de_duracao > 8.00;
 
-
-
-
---Uptade's na tabela lalalala
-
-
-
+--Uptade na tabela Cargo Scrum
+UPDATE cargos_scrum SET funcao = 'Responsável por remover bloqueios e facilitar o trabalho da equipe Scrum.' WHERE cargo = 'Scrum Master';
 
 --Delete's na tabela lalalala
-
-
+DELETE FROM entrevistas WHERE entrevistado = 'Ana Freire';
 
 
 --------------------------------Funções Agregadas-------------------------------------
@@ -97,7 +92,10 @@ JOIN cargos_scrum
 ON membros.cargo = cargos_scrum.id
 GROUP BY cargos_scrum.cargo;
 --------------------------------Associações de Tabela (JOIN)--------------------------
-
+--JOIN entre as tabelas Membros e Cargos Scrum
+SELECT membros.nome AS Nome_Membro, cargos_scrum.cargo AS Cargo FROM membros
+JOIN cargos_scrum 
+ON membros.cargo = cargos_scrum.id;
 
 
 
