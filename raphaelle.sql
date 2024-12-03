@@ -1,7 +1,9 @@
+--Criação do banco Portal de Matérias
 CREATE DATABASE portal_de_materias;
 \c portal_de_materias;
 
 
+--Criação e Insert's da tabela de Cargos Scrum
 CREATE TABLE cargos_scrum (
     id SERIAL PRIMARY KEY,
     cargo VARCHAR(50),
@@ -16,6 +18,7 @@ INSERT INTO cargos_scrum (cargo, funcao)
 SELECT * FROM cargos_scrum;
 
 
+--Criação e Insert's da tabela de Membros
 CREATE TABLE membros (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -35,6 +38,7 @@ INSERT INTO membros (nome, cargo, email, github)
 SELECT * FROM membros;
 
 
+--Criação e Insert's da tabela de Entrevistas
 CREATE TABLE entrevistas (
     id SERIAL PRIMARY KEY,
     entrevistado VARCHAR(150) NOT NULL,
@@ -49,6 +53,7 @@ INSERT INTO entrevistas (entrevistado, tempo_de_duracao) VALUES
 SELECT * FROM entrevistas;
 
 
+--Criação e Insert's da tabela Entrevistados 
 CREATE TABLE entrevistados (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
@@ -61,6 +66,43 @@ INSERT INTO entrevistados (nome, cargo) VALUES
 ('Ana Freire', 'Professor de Português');
 
 SELECT * FROM entrevistados;
+
+
+--------------------------------Consultas nas Tabelas--------------------------------
+--Select's na tabela lalalala
+
+
+
+
+--Uptade's na tabela lalalala
+
+
+
+
+--Delete's na tabela lalalala
+
+
+
+
+--------------------------------Funções Agregadas-------------------------------------
+--Soma do número de questões dos Simulados (COUNT)
+SELECT COUNT(*) AS numero_questoes FROM simulados;
+
+--Média do tempo de duração das Entrevistas (AVG)
+SELECT AVG(tempo_de_duracao) AS media_duracao FROM entrevistas;
+
+--Total de membros por cargo dos Cargos Scrum (COUNT)
+SELECT cargos_scrum.cargo, COUNT(membros.id) AS total_membros FROM membros
+JOIN cargos_scrum 
+ON membros.cargo = cargos_scrum.id
+GROUP BY cargos_scrum.cargo;
+--------------------------------Associações de Tabela (JOIN)--------------------------
+
+
+
+
+
+
 
 
 

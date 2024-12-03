@@ -172,9 +172,9 @@ INSERT INTO estagios (cargo_estagio, empresa, salario_medio, requisitos_estagio,
 
 -- Inserções na Tabela de "Simulados"
 INSERT INTO simulados (fase_ensino, numero_questoes) VALUES
-('Ensino Fundamental 1', '5'),
-('Ensino Fundamental 2', '5'),
-('Ensino Médio', '15');
+('Ensino Fundamental 1', 5),
+('Ensino Fundamental 2', 5),
+('Ensino Médio', 15);
 
 --------------------------------Consultas nas Tabelas--------------------------------
 
