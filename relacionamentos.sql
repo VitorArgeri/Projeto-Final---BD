@@ -4,6 +4,13 @@ CREATE DATABASE portal_de_materias;
 
 ---------------------------------Criação das Tabelas---------------------------------
 
+-- Criação da Tabela: Dicas
+CREATE TABLE dicas (
+    id_dicas SERIAL PRIMARY KEY,
+    titulo_dicas VARCHAR(200),
+    descricao_dicas VARCHAR(1000),
+);
+
 -- Criação da Tabela "Autores"
 CREATE TABLE autores (
     ID_autor SERIAL PRIMARY KEY,
