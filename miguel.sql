@@ -4,9 +4,9 @@ CREATE TABLE estagios (
     id_estagio SERIAL PRIMARY KEY,
     cargo_estagio VARCHAR(100),
     empresa VARCHAR(100),
-    salario_medio DECIMAL(4,2),
+    salario_medio DECIMAL(6,2),
     requisitos_estagio VARCHAR(100),
-    carga_horaria INTEGER(2,3)
+    carga_horaria INTEGER
 );
 
 -- Criação da Tabela "Carreiras"
